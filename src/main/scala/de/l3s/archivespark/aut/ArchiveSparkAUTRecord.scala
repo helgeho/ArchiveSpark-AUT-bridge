@@ -5,9 +5,9 @@ import de.l3s.archivespark.enrich.functions._
 import de.l3s.archivespark.enrich.{EnrichFunc, EnrichRoot}
 import de.l3s.archivespark.implicits._
 import de.l3s.archivespark.specific.warc.WarcLikeRecord
-import io.archivesunleashed.spark.archive.io._
-import io.archivesunleashed.spark.matchbox.ExtractDate.DateComponent
-import io.archivesunleashed.spark.matchbox.{ExtractDate, ExtractDomain}
+import io.archivesunleashed.ArchiveRecord
+import io.archivesunleashed.matchbox.{ExtractDate, ExtractDomain}
+import io.archivesunleashed.matchbox.ExtractDate.DateComponent
 
 class ArchiveSparkAUTRecord (private var self: WarcLikeRecord) extends ArchiveRecord {
   def toArchiveSpark: WarcLikeRecord = self

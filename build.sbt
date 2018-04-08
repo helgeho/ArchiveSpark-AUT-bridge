@@ -1,13 +1,13 @@
 
 name := "ArchiveSparkAUTbridge"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.11.12"
 
 resolvers += Resolver.mavenLocal
 
-libraryDependencies += "io.archivesunleashed" % "aut" % "0.13.1-SNAPSHOT" % "provided"
+libraryDependencies += "io.archivesunleashed" % "aut" % "0.14.1-SNAPSHOT" % "provided"
 
 libraryDependencies += "com.github.helgeho" %% "archivespark" % "2.7.6" % "provided"
 

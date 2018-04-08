@@ -4,8 +4,7 @@ import de.l3s.archivespark.ArchiveSpark
 import de.l3s.archivespark.dataspecs.DataSpec
 import de.l3s.archivespark.specific.warc.WarcLikeRecord
 import de.l3s.archivespark.specific.warc.specs.{WarcCdxHdfsSpec, WarcGzHdfsSpec, WarcHdfsSpec}
-import io.archivesunleashed.spark.archive.io.ArchiveRecord
-import io.archivesunleashed.spark.rdd.RecordRDD._
+import io.archivesunleashed.ArchiveRecord
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 
@@ -42,17 +41,17 @@ object ArchiveSparkAUT {
     if (keepValidPages) rdd.keepValidPages() else rdd
   }
 
-  def loadArchives(path: String, sc: SparkContext): RDD[ArchiveRecord] = loadArchives(path, sc, keepValidPages = true)
+  def loadArchives(path: String, sc: SparkContext): RDD[ArchiveRecord] = loadArchives(path, sc, keepValidPages = false)
 
-  def loadArchives(path: String): RDD[ArchiveRecord] = loadArchives(path, keepValidPages = true)
+  def loadArchives(path: String): RDD[ArchiveRecord] = loadArchives(path, keepValidPages = false)
 
-  def loadArchives(cdxPath: String, warcPath: String, sc: SparkContext): RDD[ArchiveRecord] = loadArchives(cdxPath, warcPath, sc, keepValidPages = true)
+  def loadArchives(cdxPath: String, warcPath: String, sc: SparkContext): RDD[ArchiveRecord] = loadArchives(cdxPath, warcPath, sc, keepValidPages = false)
 
-  def loadArchives(cdxPath: String, warcPath: String): RDD[ArchiveRecord] = loadArchives(cdxPath, warcPath, keepValidPages = true)
+  def loadArchives(cdxPath: String, warcPath: String): RDD[ArchiveRecord] = loadArchives(cdxPath, warcPath, keepValidPages = false)
 
-  def loadArchives[Raw, Parsed <: WarcLikeRecord : ClassTag](sc: SparkContext, spec: DataSpec[Raw, Parsed]): RDD[ArchiveRecord] = loadArchives[Raw, Parsed](sc, spec, keepValidPages = true)
+  def loadArchives[Raw, Parsed <: WarcLikeRecord : ClassTag](sc: SparkContext, spec: DataSpec[Raw, Parsed]): RDD[ArchiveRecord] = loadArchives[Raw, Parsed](sc, spec, keepValidPages = false)
 
-  def loadArchives[Raw, Parsed <: WarcLikeRecord : ClassTag](spec: DataSpec[Raw, Parsed]): RDD[ArchiveRecord] = loadArchives[Raw, Parsed](spec, keepValidPages = true)
+  def loadArchives[Raw, Parsed <: WarcLikeRecord : ClassTag](spec: DataSpec[Raw, Parsed]): RDD[ArchiveRecord] = loadArchives[Raw, Parsed](spec, keepValidPages = false)
 
   def load(path: String, sc: SparkContext, keepValidPages: Boolean): RDD[ArchiveRecord] = loadArchives(path, sc, keepValidPages)
 

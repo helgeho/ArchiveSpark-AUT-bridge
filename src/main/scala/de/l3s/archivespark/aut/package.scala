@@ -1,8 +1,8 @@
 package de.l3s.archivespark
 
 import de.l3s.archivespark.specific.warc.WarcLikeRecord
+import io.archivesunleashed.ArchiveRecord
 import org.apache.spark.rdd.RDD
-import io.archivesunleashed.spark.archive.io._
 
 package object aut {
   implicit def autToArchiveSparkRdd(rdd: RDD[ArchiveRecord]): RDD[WarcLikeRecord] = rdd.map(_.asInstanceOf[ArchiveSparkAUTRecord].toArchiveSpark)
