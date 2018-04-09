@@ -7,8 +7,8 @@ In order to use it, simply replace `io.archivesunleashed.spark.matchbox.RecordLo
 The following example from the [AUT documentation](http://archivesunleashed.org/aut/):    
 
 ```scala
-import io.archivesunleashed.spark.matchbox._
-import io.archivesunleashed.spark.rdd.RecordRDD._
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 
 RecordLoader.loadArchives("example.arc.gz", sc)
   .keepValidPages()
@@ -20,8 +20,8 @@ RecordLoader.loadArchives("example.arc.gz", sc)
 now becomes:
 
 ```scala
-import io.archivesunleashed.spark.rdd.RecordRDD._
-import io.archivesunleashed.spark.matchbox._
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 import de.l3s.archivespark.aut._
 
 ArchiveSparkAUT.loadArchives("example.arc.gz", sc)
@@ -34,8 +34,8 @@ ArchiveSparkAUT.loadArchives("example.arc.gz", sc)
 In order to benefit from ArchiveSpark's efficient [two-step loading approach](https://github.com/helgeho/ArchiveSpark#approach), please provide CDX records together with your (W)ARC files:
 
 ```scala
-import io.archivesunleashed.spark.rdd.RecordRDD._
-import io.archivesunleashed.spark.matchbox._
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 import de.l3s.archivespark.aut._
 
 ArchiveSparkAUT.loadArchives("path/to/metadata.cdx.gz", "path/to/warc_dir")
@@ -50,8 +50,8 @@ ArchiveSparkAUT.loadArchives("path/to/metadata.cdx.gz", "path/to/warc_dir")
 It is also possible to use any [ArchiveSpark Data Specification (DataSpec)](https://github.com/helgeho/ArchiveSpark/blob/master/docs/DataSpecs.md) for Web archives with the ArchiveSpark-AUT-bridge:
 
 ```scala
-import io.archivesunleashed.spark.rdd.RecordRDD._
-import io.archivesunleashed.spark.matchbox._
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 import de.l3s.archivespark.aut._
 import de.l3s.archivespark.specific.warc.specs._
 
@@ -65,7 +65,8 @@ ArchiveSparkAUT.load(WaybackSpec("nytimes.com", from = 2012))
 Finally, the bridge RDD can be converted back into an ArchiveSpark RDD at any time by calling `.toArchiveSpark` (only before the records are mapped to some plain values). This way, ArchiveSpark's [Enrich Functions](https://github.com/helgeho/ArchiveSpark/blob/master/docs/EnrichFuncs.md) and [operations](https://github.com/helgeho/ArchiveSpark/blob/master/docs/Operations.md) can be used:
 
 ```scala
-import io.archivesunleashed.spark.rdd.RecordRDD._
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 import de.l3s.archivespark.aut._
 import de.l3s.archivespark.enrich.functions._
 import de.l3s.archivespark.implicits._
@@ -81,9 +82,9 @@ ArchiveSparkAUT.load(WarcCdxHdfsSpec("path/to/metadata.cdx.gz", "path/to/warc_di
 The conversion also works the other way around:
 
 ```scala
+import io.archivesunleashed._
+import io.archivesunleashed.matchbox._
 import de.l3s.archivespark._
-import io.archivesunleashed.spark.rdd.RecordRDD._
-import io.archivesunleashed.spark.matchbox._
 import de.l3s.archivespark.aut._
 import de.l3s.archivespark.specific.warc.specs._
 
