@@ -2,7 +2,7 @@
 
 This bridge provides a compatibility layer between [ArchiveSpark](https://github.com/helgeho/ArchiveSpark) and [The Archives Unleashed Toolkit (AUT)]((https://github.com/helgeho/ArchiveSpark)). You can now use AUT's intuitive fluent interface in combination with ArchiveSpark efficient loading and filtering approach.
 
-In order to use it, simply replace `io.archivesunleashed.spark.matchbox.RecordLoader` with `de.l3s.archivespark.aut.ArchiveSparkAUT` in your AUT code wherever you load your data:
+In order to use it, simply replace `io.archivesunleashed.RecordLoader` with `de.l3s.archivespark.aut.ArchiveSparkAUT` in your AUT code wherever you load your data:
 
 The following example from the [AUT documentation](http://archivesunleashed.org/aut/):    
 
